@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The Bitcoin Core developers
+// Copyright (c) 2019 The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -68,11 +68,11 @@ Connection::~Connection()
     // out of scope or trigger obscure capnp i/o errors.
     //
     // The ProxySever cleanup handlers call user defined destructors on server
-    // object, which can run arbitrary blocking bitcoin code so they have to run
+    // object, which can run arbitrary blocking smithcoin code so they have to run
     // asynchronously in a different thread. The asynchronous cleanup functions
     // intentionally aren't started until after the synchronous cleanup
-    // functions run, so client objects are fully disconnected before bitcoin
-    // code in the destructors are run. This way if the bitcoin code tries to
+    // functions run, so client objects are fully disconnected before smithcoin
+    // code in the destructors are run. This way if the smithcoin code tries to
     // make client requests the requests will just fail immediately instead of
     // sending i/o or accessing the event loop.
     //
@@ -144,7 +144,7 @@ void Connection::addAsyncCleanup(std::function<void()> fn)
     // order, and add cleanup callbacks to the end of the list so they can be
     // run starting from the beginning of the list.
     //
-    // In bitcoin core, running these callbacks in the right order is
+    // In smithcoin core, running these callbacks in the right order is
     // particularly important for the wallet process, because it uses blocking
     // shared_ptrs and requires Chain::Notification pointers owned by the node
     // process to be destroyed before the WalletLoader objects owned by the node

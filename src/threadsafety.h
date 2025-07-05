@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2020 The Bitcoin Core developers
+// Copyright (c) 2009-2020 The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_THREADSAFETY_H
-#define BITCOIN_THREADSAFETY_H
+#ifndef SMITHCOIN_THREADSAFETY_H
+#define SMITHCOIN_THREADSAFETY_H
 
 #include <mutex>
 
@@ -76,4 +76,4 @@ public:
     ~StdLockGuard() UNLOCK_FUNCTION() = default;
 };
 
-#endif // BITCOIN_THREADSAFETY_H
+#endif // SMITHCOIN_THREADSAFETY_H

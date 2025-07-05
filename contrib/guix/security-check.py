@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2022 The Bitcoin Core developers
+# Copyright (c) 2015-2022 The Smithcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
@@ -123,10 +123,10 @@ def check_ELF_CONTROL_FLOW(binary) -> bool:
 
 def check_ELF_FORTIFY(binary) -> bool:
 
-    # bitcoin-util does not currently contain any fortified functions
-    if 'Bitcoin Core bitcoin-util utility version ' in binary.strings:
+    # smithcoin-util does not currently contain any fortified functions
+    if 'Smithcoin Core smithcoin-util utility version ' in binary.strings:
         return True
-    # bitcoin wrapper does not currently contain any fortified functions
+    # smithcoin wrapper does not currently contain any fortified functions
     if '--monolithic' in binary.strings:
         return True
 

@@ -2,7 +2,7 @@
 
 **Updated for OpenBSD [7.6](https://www.openbsd.org/76.html)**
 
-This guide describes how to build bitcoind, command-line utilities, and GUI on OpenBSD.
+This guide describes how to build smithcoind, command-line utilities, and GUI on OpenBSD.
 
 ## Preparation
 
@@ -15,17 +15,17 @@ pkg_add git cmake boost libevent
 
 See [dependencies.md](dependencies.md) for a complete overview.
 
-### 2. Clone Bitcoin Repo
-Clone the Bitcoin Core repository to a directory. All build scripts and commands will run from this directory.
+### 2. Clone Smithcoin Repo
+Clone the Smithcoin Core repository to a directory. All build scripts and commands will run from this directory.
 ``` bash
-git clone https://github.com/bitcoin/bitcoin.git
+git clone https://github.com/smithcoin/smithcoin.git
 ```
 
 ### 3. Install Optional Dependencies
 
 #### Wallet Dependencies
 
-It is not necessary to build wallet functionality to run either `bitcoind` or `bitcoin-qt`.
+It is not necessary to build wallet functionality to run either `smithcoind` or `smithcoin-qt`.
 SQLite is required to build the wallet.
 
 
@@ -36,7 +36,7 @@ pkg_add sqlite3
 #### GUI Dependencies
 ###### Qt6
 
-Bitcoin Core includes a GUI built with the cross-platform Qt Framework. To compile the GUI, we need to install
+Smithcoin Core includes a GUI built with the cross-platform Qt Framework. To compile the GUI, we need to install
 the necessary parts of Qt, the libqrencode and pass `-DBUILD_GUI=ON`. Skip if you don't intend to use the GUI.
 
 ```bash
@@ -58,7 +58,7 @@ Otherwise, if you don't need QR encoding support, use the `-DWITH_QRENCODE=OFF` 
 #### Notifications
 ###### ZeroMQ
 
-Bitcoin Core can provide notifications via ZeroMQ. If the package is installed, support will be compiled in.
+Smithcoin Core can provide notifications via ZeroMQ. If the package is installed, support will be compiled in.
 ```bash
 pkg_add zeromq
 ```
@@ -71,11 +71,11 @@ To run the test suite (recommended), you will need to have Python 3 installed:
 pkg_add python py3-zmq  # Select the newest version of the python package if necessary.
 ```
 
-## Building Bitcoin Core
+## Building Smithcoin Core
 
 ### 1. Configuration
 
-There are many ways to configure Bitcoin Core, here are a few common examples:
+There are many ways to configure Smithcoin Core, here are a few common examples:
 
 ##### Descriptor Wallet and GUI:
 This enables descriptor wallet support and the GUI, assuming SQLite and Qt 6 are installed.
@@ -104,7 +104,7 @@ data(kbytes)         1572864
 ```
 
 This is, unfortunately, in some cases not enough to compile some `.cpp` files in the project,
-(see issue [#6658](https://github.com/bitcoin/bitcoin/issues/6658)).
+(see issue [#6658](https://github.com/smithcoin/smithcoin/issues/6658)).
 If your user is in the `staff` group the limit can be raised with:
 ```bash
 ulimit -d 3000000

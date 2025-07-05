@@ -1,9 +1,9 @@
-// Copyright (c) 2012-present The Bitcoin Core developers
+// Copyright (c) 2012-present The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_DBWRAPPER_H
-#define BITCOIN_DBWRAPPER_H
+#ifndef SMITHCOIN_DBWRAPPER_H
+#define SMITHCOIN_DBWRAPPER_H
 
 #include <attributes.h>
 #include <serialize.h>
@@ -293,4 +293,4 @@ public:
     }
 };
 
-#endif // BITCOIN_DBWRAPPER_H
+#endif // SMITHCOIN_DBWRAPPER_H

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2022 The Bitcoin Core developers
+# Copyright (c) 2022 The Smithcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the sendmany RPC command."""
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import SmithcoinTestFramework
 from test_framework.util import assert_raises_rpc_error
 
 
-class SendmanyTest(BitcoinTestFramework):
+class SendmanyTest(SmithcoinTestFramework):
     def skip_test_if_missing_module(self):
         self.skip_if_no_wallet()
 

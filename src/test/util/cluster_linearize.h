@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
-#define BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
+#ifndef SMITHCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
+#define SMITHCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
 
 #include <cluster_linearize.h>
 #include <serialize.h>
@@ -396,4 +396,4 @@ void SanityCheck(const DepGraph<SetType>& depgraph, std::span<const DepGraphInde
 
 } // namespace
 
-#endif // BITCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H
+#endif // SMITHCOIN_TEST_UTIL_CLUSTER_LINEARIZE_H

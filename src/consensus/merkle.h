@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2019 The Bitcoin Core developers
+// Copyright (c) 2015-2019 The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CONSENSUS_MERKLE_H
-#define BITCOIN_CONSENSUS_MERKLE_H
+#ifndef SMITHCOIN_CONSENSUS_MERKLE_H
+#define SMITHCOIN_CONSENSUS_MERKLE_H
 
 #include <vector>
 
@@ -34,4 +34,4 @@ uint256 BlockWitnessMerkleRoot(const CBlock& block, bool* mutated = nullptr);
  */
 std::vector<uint256> TransactionMerklePath(const CBlock& block, uint32_t position);
 
-#endif // BITCOIN_CONSENSUS_MERKLE_H
+#endif // SMITHCOIN_CONSENSUS_MERKLE_H

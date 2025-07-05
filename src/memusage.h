@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2022 The Bitcoin Core developers
+// Copyright (c) 2015-2022 The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MEMUSAGE_H
-#define BITCOIN_MEMUSAGE_H
+#ifndef SMITHCOIN_MEMUSAGE_H
+#define SMITHCOIN_MEMUSAGE_H
 
 #include <indirectmap.h>
 #include <prevector.h>
@@ -217,4 +217,4 @@ static inline size_t DynamicUsage(const std::unordered_map<Key,
 
 } // namespace memusage
 
-#endif // BITCOIN_MEMUSAGE_H
+#endif // SMITHCOIN_MEMUSAGE_H

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2022 The Bitcoin Core developers
+# Copyright (c) 2022 The Smithcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 import os
@@ -9,12 +9,12 @@ import tempfile
 import argparse
 
 BINARIES = [
-'bin/bitcoind',
-'bin/bitcoin-cli',
-'bin/bitcoin-tx',
-'bin/bitcoin-wallet',
-'bin/bitcoin-util',
-'bin/bitcoin-qt',
+'bin/smithcoind',
+'bin/smithcoin-cli',
+'bin/smithcoin-tx',
+'bin/smithcoin-wallet',
+'bin/smithcoin-util',
+'bin/smithcoin-qt',
 ]
 
 parser = argparse.ArgumentParser(

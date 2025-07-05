@@ -1,4 +1,4 @@
-// Copyright (c) 2014-present The Bitcoin Core developers
+// Copyright (c) 2014-present The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -422,7 +422,7 @@ BOOST_AUTO_TEST_CASE(sha256_testvectors) {
                "f08a78cbbaee082b052ae0708f32fa1e50c5c421aa772ba5dbb406a2ea6be342");
     TestSHA256("This is exactly 64 bytes long, not counting the terminating byte",
                "ab64eff7e88e2e46165e29f2bce41826bd4c7b3552f6b382a9e7d3af47c245f8");
-    TestSHA256("As Bitcoin relies on 80 byte header hashes, we want to have an example for that.",
+    TestSHA256("As Smithcoin relies on 80 byte header hashes, we want to have an example for that.",
                "7406e8de7d6e4fffc573daef05aefb8806e7790f55eab5576f31349743cca743");
     TestSHA256(std::string(1000000, 'a'),
                "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0");
@@ -918,7 +918,7 @@ BOOST_AUTO_TEST_CASE(poly1305_testvector)
                  "13000000000000000000000000000000");
 
     // Tests from https://github.com/floodyberry/poly1305-donna/blob/master/poly1305-donna.c
-    TestPoly1305("8e993b9f48681273c29650ba32fc76ce48332ea7164d96a4476fb8c531a1186a"
+    TestPoly1305("8e993b9f48681273c29650ba32fc76ce411001ea7164d96a4476fb8c531a1186a"
                  "c0dfc17c98dce87b4da7f011ec48c97271d2c20f9b928fe2270d6fb863d51738"
                  "b48eeee314a7cc8ab932164548e526ae90224368517acfeabd6bb3732bc0e9da"
                  "99832b61ca01b6de56244a9e88d5f9b37973f622a43d14a6599b1f654cb45a74"

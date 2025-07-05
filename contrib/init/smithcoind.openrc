@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/smithcoin/.smithcoin" ]; then
+	SMITHCOIND_DEFAULT_DATADIR="/var/lib/smithcoin/.smithcoin"
+else
+	SMITHCOIND_DEFAULT_DATADIR="/var/lib/smithcoind"
+fi
+
+SMITHCOIND_CONFIGFILE=${SMITHCOIND_CONFIGFILE:-/etc/smithcoin/smithcoin.conf}
+SMITHCOIND_PIDDIR=${SMITHCOIND_PIDDIR:-/var/run/smithcoind}
+SMITHCOIND_PIDFILE=${SMITHCOIND_PIDFILE:-${SMITHCOIND_PIDDIR}/smithcoind.pid}
+SMITHCOIND_DATADIR=${SMITHCOIND_DATADIR:-${SMITHCOIND_DEFAULT_DATADIR}}
+SMITHCOIND_USER=${SMITHCOIND_USER:-${SMITHCOIN_USER:-smithcoin}}
+SMITHCOIND_GROUP=${SMITHCOIND_GROUP:-smithcoin}
+SMITHCOIND_BIN=${SMITHCOIND_BIN:-/usr/bin/smithcoind}
+SMITHCOIND_NICE=${SMITHCOIND_NICE:-${NICELEVEL:-0}}
+SMITHCOIND_OPTS="${SMITHCOIND_OPTS:-${SMITHCOIN_OPTS}}"
+
+name="Smithcoin Core Daemon"
+description="Smithcoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/smithcoind"
+command_args="-pid=\"${SMITHCOIND_PIDFILE}\" \
+		-conf=\"${SMITHCOIND_CONFIGFILE}\" \
+		-datadir=\"${SMITHCOIND_DATADIR}\" \
+		-daemon \
+		${SMITHCOIND_OPTS}"
+
+required_files="${SMITHCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${SMITHCOIND_USER} \
+			-N ${SMITHCOIND_NICE} -w 2000"
+pidfile="${SMITHCOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${SMITHCOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${SMITHCOIND_USER}:${SMITHCOIND_GROUP}" \
+	"${SMITHCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${SMITHCOIND_USER}:${SMITHCOIND_GROUP}" \
+	"${SMITHCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o "${SMITHCOIND_USER}:${SMITHCOIND_GROUP}" \
+	-m 0660 \
+	"${SMITHCOIND_CONFIGFILE}"
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if grep -qs '^rpcuser=' "${SMITHCOIND_CONFIGFILE}" && \
+		! grep -qs '^rpcpassword=' "${SMITHCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run smithcoind."
+		eerror "The setting must appear in ${SMITHCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Smithcoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_TIME_H
-#define BITCOIN_TEST_UTIL_TIME_H
+#ifndef SMITHCOIN_TEST_UTIL_TIME_H
+#define SMITHCOIN_TEST_UTIL_TIME_H
 
 #include <util/time.h>
 
@@ -20,4 +20,4 @@ struct ElapseSteady {
     }
 };
 
-#endif // BITCOIN_TEST_UTIL_TIME_H
+#endif // SMITHCOIN_TEST_UTIL_TIME_H

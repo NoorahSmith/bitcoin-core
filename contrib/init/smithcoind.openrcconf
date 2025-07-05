@@ -1,0 +1,33 @@
+# /etc/conf.d/smithcoind: config file for /etc/init.d/smithcoind
+
+# Config file location
+#SMITHCOIND_CONFIGFILE="/etc/smithcoin/smithcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $SMITHCOIND_USER)
+#SMITHCOIND_PIDDIR="/var/run/smithcoind"
+
+# What filename to give the pidfile
+#SMITHCOIND_PIDFILE="${SMITHCOIND_PIDDIR}/smithcoind.pid"
+
+# Where to write smithcoind data (be mindful that the blockchain is large)
+#SMITHCOIND_DATADIR="/var/lib/smithcoind"
+
+# User and group to own smithcoind process
+#SMITHCOIND_USER="smithcoin"
+#SMITHCOIND_GROUP="smithcoin"
+
+# Path to smithcoind executable
+#SMITHCOIND_BIN="/usr/bin/smithcoind"
+
+# Nice value to run smithcoind under
+#SMITHCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#SMITHCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for smithcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+SMITHCOIND_SIGTERM_TIMEOUT=600

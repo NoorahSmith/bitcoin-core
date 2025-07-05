@@ -1,9 +1,9 @@
-// Copyright (c) 2023-present The Bitcoin Core developers
+// Copyright (c) 2023-present The Smithcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit.
 
-#ifndef BITCOIN_UTIL_TRANSACTION_IDENTIFIER_H
-#define BITCOIN_UTIL_TRANSACTION_IDENTIFIER_H
+#ifndef SMITHCOIN_UTIL_TRANSACTION_IDENTIFIER_H
+#define SMITHCOIN_UTIL_TRANSACTION_IDENTIFIER_H
 
 #include <attributes.h>
 #include <uint256.h>
@@ -76,4 +76,4 @@ using Txid = transaction_identifier<false>;
 /** Wtxid commits to all transaction fields including the witness. */
 using Wtxid = transaction_identifier<true>;
 
-#endif // BITCOIN_UTIL_TRANSACTION_IDENTIFIER_H
+#endif // SMITHCOIN_UTIL_TRANSACTION_IDENTIFIER_H
