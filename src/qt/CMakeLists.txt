@@ -250,41 +250,23 @@ qt6_add_lrelease(bitcoinqt
   OPTIONS -silent
 )
 
-add_executable(bitcoin-qt
-  main.cpp
-  ../init/bitcoin-qt.cpp
-)
-
-add_windows_resources(bitcoin-qt res/bitcoin-qt-res.rc)
-add_windows_application_manifest(bitcoin-qt)
-
-target_link_libraries(bitcoin-qt
-  core_interface
-  bitcoinqt
-  bitcoin_node
-)
-
-import_plugins(bitcoin-qt)
-install_binary_component(bitcoin-qt HAS_MANPAGE)
+add_executable(smithcoin-qt main.cpp ../init/bitcoin-qt.cpp)
+add_windows_resources(smithcoin-qt res/bitcoin-qt-res.rc)
+add_windows_application_manifest(smithcoin-qt)
+target_link_libraries(smithcoin-qt core_interface bitcoinqt bitcoin_node)
+import_plugins(smithcoin-qt)
+install_binary_component(smithcoin-qt HAS_MANPAGE)
 if(WIN32)
-  set_target_properties(bitcoin-qt PROPERTIES WIN32_EXECUTABLE TRUE)
+  set_target_properties(smithcoin-qt PROPERTIES WIN32_EXECUTABLE TRUE)
 endif()
 
 if(ENABLE_IPC)
-  add_executable(bitcoin-gui
-    main.cpp
-    ../init/bitcoin-gui.cpp
-  )
-  target_link_libraries(bitcoin-gui
-    core_interface
-    bitcoinqt
-    bitcoin_node
-    bitcoin_ipc
-  )
-  import_plugins(bitcoin-gui)
-  install_binary_component(bitcoin-gui)
+  add_executable(smithcoin-gui main.cpp ../init/bitcoin-gui.cpp)
+  target_link_libraries(smithcoin-gui core_interface bitcoinqt bitcoin_node bitcoin_ipc)
+  import_plugins(smithcoin-gui)
+  install_binary_component(smithcoin-gui)
   if(WIN32)
-    set_target_properties(bitcoin-gui PROPERTIES WIN32_EXECUTABLE TRUE)
+    set_target_properties(smithcoin-gui PROPERTIES WIN32_EXECUTABLE TRUE)
   endif()
 endif()
 
